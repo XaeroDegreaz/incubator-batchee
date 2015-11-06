@@ -51,7 +51,7 @@ public class Dictionary {
 
         String[] JOB_EXECUTION_COLUMNS = { "executionId", "batchStatus", "createTime", "endTime", "exitStatus", "jobProperties",
                 "startTime", "updateTime", "INSTANCE_JOBINSTANCEID" };
-        String CREATE_JOB_EXECUTION = CREATE_TABLE + "%s(%s %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s)";
+        String CREATE_JOB_EXECUTION = CREATE_TABLE + "%s(%s %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, primary key(executionId))";
         String JOB_EXECUTION_TIMESTAMPS = SELECT + " %s, %s, %s, %s" + FROM + "%s" + WHERE + "%s = ?";
         String JOB_EXECUTION_BATCH_STATUS = SELECT + "%s" + FROM + "%s" + WHERE + "%s = ?";
         String JOB_EXECUTION_EXIT_STATUS = SELECT + "%s" + FROM + "%s" + WHERE + "%s = ?";

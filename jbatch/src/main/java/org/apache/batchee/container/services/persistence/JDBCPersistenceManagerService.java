@@ -209,7 +209,7 @@ public class JDBCPersistenceManagerService implements PersistenceManagerService 
 
     private void createSchema() throws SQLException {
         final Connection conn = getConnectionToDefaultSchema();
-        final PreparedStatement ps = conn.prepareStatement("CREATE SCHEMA " + schema);
+        final PreparedStatement ps = conn.prepareStatement("CREATE SCHEMA IF NOT EXISTS " + schema);
         ps.execute();
         cleanupConnection(conn, null, ps);
     }
@@ -328,8 +328,7 @@ public class JDBCPersistenceManagerService implements PersistenceManagerService 
             return;
         }
 
-        final PreparedStatement ps = connection.prepareStatement("set schema ?");
-        ps.setString(1, schema);
+        final PreparedStatement ps = connection.prepareStatement("use "+schema);
         ps.executeUpdate();
         ps.close();
     }
